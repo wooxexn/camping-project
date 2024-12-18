@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Service("/loginUserService")
 public class UserService implements UserDetailsService {
 
     private final UserMapper userMapper;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Member List</title>
+
+    <style>
+
+        .active{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<h1>Member List</h1>
+
+<!-- Display member list -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>pw</th>
+        <th>name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.m_id}"></td>
+        <td th:text="${member.m_pw}"></td>
+        <td th:text="${member.m_name}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<!-- 페이징-->
+<div>
+
+    <span th:if="${pageHandler.grpStartPage> 1}">
+        <a th:href="@{/list(currentPage=${ pageHandler.grpStartPage -1})}">이전</a>
+    </span>
+
+
+    <span th:each="page : ${#numbers.sequence(pageHandler.grpStartPage , pageHandler.grpEndPage)}">
+        <a th:href="@{/list(currentPage=${page})}"  th:text="${page}"></a>
+    </span>
+
+
+    <span th:if="${pageHandler.grpEndPage  < pageHandler.totalPage}">
+        <a th:href="@{/list(currentPage=${pageHandler.grpEndPage +1})}">다음</a>
+    </span>
+
+</div>
+
+
+</body>
+</html>

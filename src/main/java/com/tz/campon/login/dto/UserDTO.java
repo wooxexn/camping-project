@@ -14,4 +14,7 @@ public class UserDTO {
     private String name;
     private String phone;
     private String kakao_id;
+
+    public void setPassword(String encodedPassword) {
+    }
 }
